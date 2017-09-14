@@ -1,0 +1,4 @@
+to test
+	forever [askport 2 on wait 10 off wait 10]
+
+end
