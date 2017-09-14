@@ -1,0 +1,16 @@
+{
+  "require" : {
+    "php":"5.6.31",
+	"phalcon/devtools":"3.0.3"
+  },
+  "require-dev": {
+    "heroku/heroku-buildpack-php": "*"
+  },
+  "scripts": {
+    "compile": [
+      "chmod -R a+w ./web/app/views/",
+	  "chmod -R a+w ./web/app/views/index/",
+	  "chmod -R a+w ./web/cache/"
+    ]
+  }
+}

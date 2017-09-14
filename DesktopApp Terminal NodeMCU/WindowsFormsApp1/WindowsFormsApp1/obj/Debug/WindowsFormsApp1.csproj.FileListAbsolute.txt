@@ -1,0 +1,9 @@
+C:\Users\attaphon_wong\OneDrive - Chiang Mai University\PROJECT_FINAL\DesktopApp Terminal NodeMCU\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+C:\Users\attaphon_wong\OneDrive - Chiang Mai University\PROJECT_FINAL\DesktopApp Terminal NodeMCU\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\attaphon_wong\OneDrive - Chiang Mai University\PROJECT_FINAL\DesktopApp Terminal NodeMCU\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
+C:\Users\attaphon_wong\OneDrive - Chiang Mai University\PROJECT_FINAL\DesktopApp Terminal NodeMCU\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\attaphon_wong\OneDrive - Chiang Mai University\PROJECT_FINAL\DesktopApp Terminal NodeMCU\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\attaphon_wong\OneDrive - Chiang Mai University\PROJECT_FINAL\DesktopApp Terminal NodeMCU\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\attaphon_wong\OneDrive - Chiang Mai University\PROJECT_FINAL\DesktopApp Terminal NodeMCU\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\attaphon_wong\OneDrive - Chiang Mai University\PROJECT_FINAL\DesktopApp Terminal NodeMCU\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\attaphon_wong\OneDrive - Chiang Mai University\PROJECT_FINAL\DesktopApp Terminal NodeMCU\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
