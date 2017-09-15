@@ -9,6 +9,7 @@ import logging
 import struct
 import sys
 import time
+from Tkinter import *
 
 from simpleDemoConfig import simpleDemoConfig
 from CoreSystem.byteCodeZigBee import ByteCodeZigBee
@@ -135,7 +136,9 @@ def readInputSerial(ser):
             RP = ByteCodeInterpreter.interpretByteCodeToPacket(i)
             #print(RP)
             if(RP['CMD']==1):
-                NodeAddr[str(RP['IEEE_ADDR'])] = RP['SHORT_ADDR']
+                Name = "NewEzZigbeeNode"
+                NodeAddr[str(Name)] = RP['SHORT_ADDR']
+                writerespone("2")
             if(RP['CMD']==8):
                 Respone['STATUS'] = RP['STATUS']
                 writerespone(str(RP['STATUS']))

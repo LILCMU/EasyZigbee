@@ -12,7 +12,7 @@ NodeAddrString = NodeAddrString.split('|')
 for Node in NodeAddrString :
     if(Node!=""):
         NodeAddr[Node.split(';')[0]] = Node.split(';')[1]
-        NodeName[Node.split(';')[0]] = Node.split(';')[2]
+        #NodeName[Node.split(';')[0]] = Node.split(';')[2]
 import csv
 MQTT = {}
 with open('CONFIG_GATEWAY.csv', mode='r') as infile:
@@ -47,6 +47,7 @@ def readtempaddr():
 class NodeEzZigbee:
     def __init__(self,IEEEAddr):
         self.IEEEAddr = IEEEAddr
+        self.StatusNode = 0
         try:
             print("Creating...Node : "+str(IEEEAddr))
             z = Zigbee("IDENTIFY 255 0 "+str(NodeAddr[self.IEEEAddr])+" 1")
@@ -57,10 +58,13 @@ class NodeEzZigbee:
                 count = count+1
             if(z.GetResp() != "" and z.GetResp()=="1"):
                 print("Node : "+str(IEEEAddr)+" have been created !")
+                self.StatusNode = 1
             else:
                 print("Short addr is changed or Node is Offline , Plase Join again")
+                self.StatusNode = 0
         except:
             print("Don't have this IEEEAddr in Network , Plase Join again!")
+            self.StatusNode = 0
     def On(self):
         SendMQTT(self.IEEEAddr,"ON")
         try:
@@ -86,15 +90,19 @@ class CoEzZigbee:
     def PermitJoin(self):
         z = Zigbee("PERMITJOIN 255")
         z.Doit()
-        while(readtempaddr()==str(z.GetTable()) or z.GetTable() == {}):
+        while((readtempaddr()==str(z.GetTable()) or z.GetTable() == {}) and z.GetResp()!="2" ):
             time.sleep(1)
+    def SetNodeName(self,name):
+        z = Zigbee("PERMITJOIN 255")
         writetempaddr(str(z.GetTable()))
         for key, value in z.GetTable().iteritems():
             NodeAddr[key] = value
-        name = raw_input("Enter Name :")
+        temp = NodeAddr['NewEzZigbeeNode']
+        del NodeAddr['NewEzZigbeeNode']
+        NodeAddr[str(name)] = temp
         text_file = open("AddrTable.dat", "w")
         for key, value in NodeAddr.iteritems():
-            text_file.write(name+";"+str(value)+";"+str(key)+"|")
+            text_file.write(str(key)+";"+str(value)+"|")
         text_file.close()
         SendMQTT("JOIN",str(NodeAddr))
         return NodeAddr
