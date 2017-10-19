@@ -125,29 +125,21 @@ class ByteCodeZigBee:
             elif cmd_pack == 9:
                 packet_temp['CMD'] = 9
                 packet_temp['SRC_ADDR'] = struct.unpack('>I', bytearray([0, 0, ord(bc[5]), ord(bc[6])]))[0]
-                packet_temp['EP'] = ord(bc[7])
+                # packet_temp['EP'] = ord(bc[7])
                 packet_temp['CLUSTER_ID'] = struct.unpack('>I', bytearray([0, 0, ord(bc[8]), ord(bc[9])]))[0]
-                #check cluster id (64513 is customize cluster for GEKKO)
+                # check cluster id (64513 is customize cluster for GEKKO)
                 if packet_temp['CLUSTER_ID'] == 64513:
+
                     packet_temp['REGISTER_COUNT'] = ord(bc[10])
-                    packet_temp['LOGO_PACKET_TYPE'] = ord(bc[11])
                     packet_temp['REGISTERS'] = []
-                    for i in range(0,packet_temp['REGISTER_COUNT']):
-                        packet_temp['REGISTERS'].append(ord(bc[11+i]))
-                    #separate packet type
-                    if packet_temp['LOGO_PACKET_TYPE'] == 0:
-                        packet_temp['SENSOR1'] = struct.unpack('>I', bytearray([0, 0, ord(bc[12]), ord(bc[13])]))[0]
-                    #for hotel system (GEKKO)
-                    elif packet_temp['LOGO_PACKET_TYPE'] == 11:
-                        packet_temp['IR_MANUAL_ON_COUNTER'] = ord(bc[12])
-                        packet_temp['IR_MANUAL_OFF_COUNTER'] = ord(bc[13])
-                        packet_temp['IR_HOUSEKEEPING_ON_COUNTER'] = ord(bc[14])
-                        packet_temp['IR_HOUSEKEEPING_OFF_COUNTER'] = ord(bc[15])
-                        packet_temp['CURRENT_SENSOR'] = struct.unpack('>I', bytearray([0, 0, ord(bc[16]), ord(bc[17])]))[0]
-                        if packet_temp['CURRENT_SENSOR'] > 50:
-                            packet_temp['POWER_CONSUMPTION_FLAG'] = 1
-                        else:
-                            packet_temp['POWER_CONSUMPTION_FLAG'] = 0
+                    for i in range(0, packet_temp['REGISTER_COUNT']):
+                        packet_temp['REGISTERS'].append(ord(bc[11 + i]))
+                    packet_temp['LOGO_PACKET_TYPE'] = ord(bc[11])
+                    # robotic
+                    packet_temp['SENSOR1'] =  \
+                    struct.unpack('>I', bytearray([0, 0, ord(bc[12]), ord(bc[13])]))[0]
+                    packet_temp['SENSOR2'] = \
+                    struct.unpack('>I', bytearray([0, 0, ord(bc[14]), ord(bc[15])]))[0]
             elif cmd_pack == 10:
                 packet_temp['CMD'] = 10
                 packet_temp['SRC_ADDR'] = struct.unpack('>I', bytearray([0, 0, ord(bc[13]), ord(bc[14])]))[0]

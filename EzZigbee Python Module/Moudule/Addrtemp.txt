@@ -1,1 +1,1 @@
-{'NewEzZigbeeNode': 53673}
+{'NewEzZigbeeNode': 50906}

@@ -33,6 +33,8 @@ if(MQTT['MQTT'].upper() == 'ON'):
     print("Start MQTT => "+broker_address+":"+broker_port+" TOPPIC : "+MQTT['MQTT_TOPPIC'])
     client = mqtt.Client("EzZigbee") 
     client.on_message=on_message
+    if(MQTT['MQTT_USERNAME']!="" and MQTT['MQTT_PASSWORD'] !=""):
+        client.username_pw_set(MQTT['MQTT_USERNAME'],MQTT['MQTT_PASSWORD'])
     client.connect(broker_address,broker_port)
     client.loop_start()
 def SendMQTT(path,messg):
@@ -47,6 +49,7 @@ def readtempaddr():
 class NodeEzZigbee:
     def __init__(self,IEEEAddr):
         self.IEEEAddr = IEEEAddr
+        self.z = Zigbee("PERMITJOIN 0")
         self.StatusNode = 0
         try:
             print("Creating...Node : "+str(IEEEAddr))
@@ -65,16 +68,24 @@ class NodeEzZigbee:
         except:
             print("Don't have this IEEEAddr in Network , Plase Join again!")
             self.StatusNode = 0
-    def On(self):
-        SendMQTT(self.IEEEAddr,"ON")
+    def On(self,Port):
         try:
-            z = Zigbee("ONOFF 255 0 "+str(NodeAddr[self.IEEEAddr])+" 1").Doit()
+            if(Port==1):
+                SendMQTT(self.IEEEAddr,"ON PORT1")
+                z = Zigbee("ONOFFPORT 255 0 "+str(NodeAddr[self.IEEEAddr])+" 01").Doit()
+            elif(Port==2):
+                SendMQTT(self.IEEEAddr,"ON PORT12")
+                z = Zigbee("ONOFFPORT 255 0 "+str(NodeAddr[self.IEEEAddr])+" 11").Doit()
         except:
             print("Don't have this IEEEAddr in Network")
-    def Off(self):
-        SendMQTT(self.IEEEAddr,"OFF")
+    def Off(self,Port):
         try:
-            z = Zigbee("ONOFF 255 0 "+str(NodeAddr[self.IEEEAddr])+" 0").Doit()
+            if(Port==1):
+                SendMQTT(self.IEEEAddr,"OFF PORT1")
+                z = Zigbee("ONOFFPORT 255 0 "+str(NodeAddr[self.IEEEAddr])+" 00").Doit()
+            elif(Port==2):
+                SendMQTT(self.IEEEAddr,"OFF PORT12")
+                z = Zigbee("ONOFFPORT 255 0 "+str(NodeAddr[self.IEEEAddr])+" 10").Doit()
         except:
             print("Don't have this IEEEAddr in Network")
     def Beep(self):
@@ -83,6 +94,9 @@ class NodeEzZigbee:
             z = Zigbee("IDENTIFY 255 0 "+str(NodeAddr[self.IEEEAddr])+" 1").Doit()
         except:
             print("Don't have this IEEEAddr in Network")
+    def Read(self,sensor):
+        
+        return self.z.GetSensor(str(NodeAddr[self.IEEEAddr]),str(sensor).upper())
 class CoEzZigbee:
     def __init__(self):
         self.tempJOIN = {}
@@ -92,6 +106,11 @@ class CoEzZigbee:
         z.Doit()
         while((readtempaddr()==str(z.GetTable()) or z.GetTable() == {}) and z.GetResp()!="2" ):
             time.sleep(1)
+    def GetInfo(self):
+        z = Zigbee("PERMITJOIN 255")
+        infonode = z.GetInfoNode()
+        print(infonode)
+        return infonode
     def SetNodeName(self,name):
         z = Zigbee("PERMITJOIN 255")
         writetempaddr(str(z.GetTable()))
@@ -109,6 +128,6 @@ class CoEzZigbee:
     def GetTable(self):
         return NodeAddr
     def GetNodeName(self):
-        return NodeName
+        return NodeAddr
     def DenialJoin(self):
         z = Zigbee("PERMITJOIN 0").Doit()

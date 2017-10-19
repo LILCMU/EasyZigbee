@@ -21,6 +21,8 @@ MQTTclient = mqtt.Client()
 RP = {}
 Respone = {}
 NodeAddr = {}
+infonode = {}
+Sensor = {}
 def is_hex(s):
     hex_digits = set(string.hexdigits)
     return s[0:2] == "0x" and all(c in hex_digits for c in s[2:])
@@ -138,10 +140,16 @@ def readInputSerial(ser):
             if(RP['CMD']==1):
                 Name = "NewEzZigbeeNode"
                 NodeAddr[str(Name)] = RP['SHORT_ADDR']
+                infonode["ADDR"] = RP['SHORT_ADDR']
+                infonode["IEEE"] = RP['IEEE_ADDR']
                 writerespone("2")
             if(RP['CMD']==8):
                 Respone['STATUS'] = RP['STATUS']
                 writerespone(str(RP['STATUS']))
+            if(RP['CMD']==9):
+                Sensor[str(RP['SRC_ADDR'])] = {}
+                Sensor[str(RP['SRC_ADDR'])]['SENSOR1'] = RP['SENSOR1']
+                Sensor[str(RP['SRC_ADDR'])]['SENSOR2'] = RP['SENSOR2']
         _cmdList = []
 def writerespone(text):
     text_file = open("./Moudule/Respone.txt", "w")
@@ -171,6 +179,14 @@ class Zigbee:
         return NodeAddr
     def GetResp(self):
         return (open("./Moudule/Respone.txt", "r").read())
+    def GetInfoNode(self):
+        return infonode
+    def GetSensor(self,Addr,Sensorport):
+        try:
+            sensor = Sensor[Addr][Sensorport]
+        except:
+            sensor = 0
+        return sensor
 #if __name__ == '__main__':
 
     #sp = initSerial()
