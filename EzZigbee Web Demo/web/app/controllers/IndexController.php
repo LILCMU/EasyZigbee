@@ -14,7 +14,7 @@ class IndexController extends ControllerBase
     public function loginAction()
     {
         $this->assets->addCss('/public/css/login.css');
-        $this->assets->addJs('http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js');
+        $this->assets->addJs('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js');
         $this->assets->addJs('https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js');
 
      // check conditions
@@ -53,8 +53,8 @@ class IndexController extends ControllerBase
    
     public function dashboardAction()
     {
-        $this->assets->addCss('\public\css\dashboard.css');
-        $this->assets->addJs('\public\js\dashboard.js');
+        $this->assets->addCss('/public/css/dashboard.css');
+        $this->assets->addJs('/public/js/dashboard.js');
         $url = "http://ezzigbeeapi.herokuapp.com/Dashboard";
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
