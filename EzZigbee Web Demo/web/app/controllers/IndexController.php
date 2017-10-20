@@ -108,6 +108,22 @@ class IndexController extends ControllerBase
         }
 
     }
+    public function sendmqttbeepAction(){
+    
+        $name = $_GET["name"] ;
+        require('phpMQTT.php');
+        $name = explode("_",$name) ;
+        $message = "Zigbee.Nodes['".$name[0]."'].Beep()";
+        $mqtt = new Bluerhinos\phpMQTT('broker.mqtt-cpe.ml', '1883', 'PHP');
+        if ($mqtt->connect(true, NULL, '', '')) {
+            $mqtt->publish('EzZigBee/Demo/LoadCode', $message, 0);
+            echo "Published message: " . $message;
+            $mqtt->close();
+        }else{
+            echo "Fail or time out<br />";
+        }
+
+    }
     public function sendmqttoffAction(){
         $port = $_GET["port"] ;
         $name = $_GET["name"] ;

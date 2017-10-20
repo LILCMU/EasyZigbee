@@ -19,7 +19,7 @@
                  "<tr>"
 
                     +" <div class='col-lg-3' style= 'background-color:black; margin: 10px 10px; border-radius: 8px;padding : 5px 0px 5px;' >"
-                    +" <h4>Node : "+data.Nodes[i].Name+"</h4>"
+                    +" <h4 style='padding: 0px 10px 0px 10px;'>Node : "+data.Nodes[i].Name+"<button style= 'color:white ; background-color:#E6A01F;float:right;  '  type='button' id='"+data.Nodes[i].Name+"_port1' onclick='Beep(this.id);'>BEEP</button></h4>"
                     +" <div class='col-lg-6'>"
                     +"<span> Sensor 1 :<p id='"+data.Nodes[i].Name+"_sensor1'> "+data.Nodes[i].Sensor1+"</p></span>"
                     +"</div>"
@@ -70,7 +70,13 @@
         hra.send(null);
     },3000);
 }
+function Beep(Name){
     
+        
+        var hr= new XMLHttpRequest();
+        hr.open("GET","sendmqttbeep?name="+Name,true);
+        hr.send();
+}
      
 function on1(Name){
     
