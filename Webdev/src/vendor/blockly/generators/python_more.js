@@ -1043,7 +1043,58 @@ Blockly.Python['logic_ifstate'] = function (block) {
     var code = 'if state_has_changed("' + value_condition + '", '+ value_condition +'):\n' + statements_if_true + '\n';
     return code;
 };
+Blockly.Blocks['ZigBee_read'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField(new Blockly.FieldImage("https://www.gstatic.com/codesite/ph/images/star_on.gif", 15, 15, "*"))
+          .appendField("ZigBee");
+      this.appendDummyInput()
+          .appendField("Read")
+          .appendField(new Blockly.FieldDropdown([["input1","OPTIONNAME"], ["input2","OPTIONNAME"]]), "NAME")
+          .appendField("of")
+          .appendField(new Blockly.FieldDropdown([["node1","OPTIONNAME"], ["node2","OPTIONNAME"], ["node3","OPTIONNAME"]]), "NAME");
+      this.setOutput(true, null);
+      this.setColour(230);
+   this.setTooltip("");
+   this.setHelpUrl("");
+    }
+  };
+  Blockly.Python['ZigBee_read'] = function(block) {
+    var dropdown_name = block.getFieldValue('NAME');
+    var dropdown_name = block.getFieldValue('NAME');
+    // TODO: Assemble Python into code variable.
+    var code = '...';
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Python.ORDER_NONE];
+  };
 
+  Blockly.Blocks['ZigBee_output'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField(new Blockly.FieldImage("https://www.gstatic.com/codesite/ph/images/star_on.gif", 15, 15, "*"))
+          .appendField("ZigBee");
+      this.appendDummyInput()
+          .appendField("Turn")
+          .appendField(new Blockly.FieldDropdown([["ON","on"], ["OFF","off"]]), "zigbee_onoff")
+          .appendField("of")
+          .appendField(new Blockly.FieldDropdown([["output1","out1"], ["output2","out2"]]), "zigbee_output")
+          .appendField("in")
+          .appendField(new Blockly.FieldDropdown([["node1","n1"], ["node2","n2"], ["node3","n3"]]), "node");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(230);
+   this.setTooltip("");
+   this.setHelpUrl("");
+    }
+  };
+  Blockly.Python['ZigBee_output'] = function(block) {
+    var dropdown_onoff = block.getFieldValue('zigbee_onoff');
+    var dropdown_output = block.getFieldValue('zigbee_output');
+    var dropdown_node = block.getFieldValue('node');
+    // TODO: Assemble Python into code variable.
+    var code = '...\n';
+    return code;
+  };
 this.variable_msg_mqtt = variable_msg_mqtt;
 this.text_server_name = text_server_name;
 this.check_mqtt_server = check_mqtt_server;
