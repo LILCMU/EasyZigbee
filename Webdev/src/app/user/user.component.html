@@ -1,0 +1,80 @@
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-md-5" *ngFor="let a of data">
+            <div class="card card-user" style="text-align: center;">
+                <div style="padding:10px; text-align:right;Font-size: 16px;">
+                    <span style="float:left; font-weight:bold;padding: 0px 10px;Font-size: 18px;"> {{a.Name}}</span>
+                    <span class="ti-pencil"></span>
+                    <span class="ti-close"></span>
+                </div>
+                <hr>
+                <p> plug in bedroom</p>
+                <h5 style=" font-weight:bold;"> IEEE Address </h5>
+                {{a.SHR}}
+                <hr>
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <span style="color:black">Test output 1</span> 
+                            <br>
+                            <label class="switch">
+                                <input type="checkbox" (change)="check1($event)" value="{{a.Name}}">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <!-- <div class="col-lg-6">
+                            <span style="color:black">Test output 2</span>
+                            <br>
+                            <label class="switch">
+                                <input type="checkbox" (change)="check2($event)" value="{{a.Name}}">
+                                <span class="slider round"></span>
+                            </label>
+                        </div> -->
+                        <!-- <button class="btn" style="width:250px; margin: 2px 2px 2px 2px;">Monitor</button> -->
+                        <button type="button" class="btn btn-primary" style="width:250px; margin: 2px 2px 2px 2px;" (click)="openModal(template)">Monitor</button>
+                        
+                            <ng-template #template>
+                                <div class="modal-header">
+                                   
+                                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()" style="margin:-12px -5px;">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title pull-left" style="margin:-12px 10px;">Monitor</h4>
+                                </div>
+                                <div class="modal-body" *ngFor="let b of sensor" style="text-Align:center">
+                                        <div class="row">
+                                            <h3>ZigBee : {{b.Name}}</h3>
+                                                <div class="col-lg-6">
+                                                        <h3>Sensor Port 1 :</h3>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                        <h3>{{b.Sensor1}}  </h3>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                        <h3>Sensor Port 2 :</h3>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                        <h3>{{b.Sensor2}}  </h3>
+                                                </div>
+                                        </div>
+                                   
+                                
+                                    
+                                </div>
+                            </ng-template>
+                        <button class="btn" style="width:250px; margin: 2px 2px 2px 2px;" (click)="beep(a.Name);">Identify node</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-4 col-md-5" style="text-Align:center;">
+
+            <img src="http://downloadicons.net/sites/default/files/plus-icon-27951.png" alt="plus" width="250" height="250">
+
+        </div>
+    </div>
+</div>

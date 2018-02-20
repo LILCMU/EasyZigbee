@@ -1,0 +1,424 @@
+<div>
+  <xml id="toolbox" style="display: none">
+    <category id="catLogic" colour="#ff5252" name="Logic">
+      <block type="controls_if"></block>
+      <block type="logic_ifstate"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_boolean"></block>
+      <block type="logic_null"></block>
+      <block type="logic_ternary"></block>
+    </category>
+    <category id="catLoops" colour="#ee1b05" name="Loops">
+      <block type="controls_time_forever_wait">
+        <value name="time">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_forever"></block>
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_whileUntil">
+        <value name="BOOL">
+          <shadow type="logic_boolean">
+            <field name="BOOL">TRUE</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_for">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="BY">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_forEach"></block>
+      <block type="controls_flow_statements"></block>
+    </category>
+    <category id="catMath" colour="#e91e63" name="Math">
+      <block type="math_number"></block>
+      <block type="math_arithmetic">
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_between"></block>
+      <block type="math_single">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">9</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_trig">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">45</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constant"></block>
+      <block type="math_number_property">
+        <value name="NUMBER_TO_CHECK">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_change">
+        <value name="DELTA">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_round">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">3.1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_on_list"></block>
+      <block type="math_modulo">
+        <value name="DIVIDEND">
+          <shadow type="math_number">
+            <field name="NUM">64</field>
+          </shadow>
+        </value>
+        <value name="DIVISOR">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constrain">
+        <value name="VALUE">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="LOW">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="HIGH">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_int">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_float"></block>
+    </category>
+    <category id="catText" colour="#ad50d4" name="Text">
+      <block type="text">
+        <field name="TEXT">String</field>
+      </block>
+      <block type="text_join"></block>
+      <block type="text_binary"></block>
+      <block type="text_append">
+        <value name="TEXT">
+          <shadow type="text"></shadow>
+        </value>
+      </block>
+      <block type="text_length">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_isEmpty">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">text</field>
+          </block>
+        </value>
+        <value name="FIND">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_charAt">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">text</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_getSubstring">
+        <value name="STRING">
+          <block type="variables_get">
+            <field name="VAR">text</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_changeCase">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_trim">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_print">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_prompt_ext">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="ujson_json"></block>
+    </category>
+    <category id="catLists" colour="#295fb9" name="Lists">
+      <block type="lists_create_with">
+        <mutation items="0"></mutation>
+      </block>
+      <block type="lists_create_with"></block>
+      <block type="lists_repeat">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="lists_length"></block>
+      <block type="lists_isEmpty"></block>
+      <block type="lists_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">list</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getIndex">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">list</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_setIndex">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR">list</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getSublist">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR">list</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_split">
+        <value name="DELIM">
+          <shadow type="text">
+            <field name="TEXT">,</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="lists_sort"></block>
+    </category>
+    <sep></sep>
+    <category id="Display" colour="#3498db" name="Display">
+      <block type="oled_text">
+        <value name="text">
+          <shadow type="text">
+            <field name="TEXT">MicroPython!</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="oled_clear"></block>
+    </category>
+    <category id="catWifi" colour="#31ddbc" name="Wifi">
+      <block type="WLAN_setting"></block>
+      <block type="WLAN_connectwifi"></block>
+      <block type="WLAN_checknetwork"></block>
+    </category>
+    <category id="catio" colour="#1abc9c" name="Input Output">
+      <block type="ADC_input"></block>
+      <block type="Pin_motor"></block>
+      <block type="Pin_motor_turn"></block>
+      <block type="Pin_motor_onoff"></block>
+      <block type="Pin_PWM_output"></block>
+      <block type="Pin_PWM_servo_heading"></block>
+      <block type="Pin_PWM_servo_left"></block>
+      <block type="Pin_PWM_servo_right"></block>
+      <block type="Pin_PWM_servo_stop"></block>
+    </category>
+    <category id="i2c" colour="#27ae60" name="I2C">
+      <block type="Pin_I2C_read"></block>
+      <block type="Pin_I2C_write">
+        <value name="i2c">
+          <shadow type="text">
+            <field name="TEXT">Message</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="Pin_I2C_scan"></block>
+    </category>
+    <category id="catTime" colour="#b7d82c" name="Time">
+      <block type="time_delay">
+        <value name="in_value">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+    </category>
+    <category id="beeper" colour="#f6cb1f" name="Beeper">
+      <block type="Pin_PWM_beeper_time_beep"></block>
+      <block type="Pin_PWM_beeper_freq">
+        <value name="freq">
+          <shadow type="math_number">
+            <field name="NUM">600</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="Pin_PWM_beeper_time_beep_wait">
+        <value name="time">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <sep></sep>
+    <category id="catVariables" colour="#f39c12" custom="VARIABLE" name="Variables"></category>
+    <category id="catFunctions" colour="#e67e22" custom="PROCEDURE" name="Functions"></category>
+    <sep></sep>
+    <category id="catmqtt" colour="#d35400" name="MQTT">
+      <block type="initmqtt_setting"></block>
+      <block type="uniqueid_time_publish">
+        <value name="message">
+          <shadow type="text">
+            <field name="TEXT">Message</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="uniqueid_time_onmsg_subscribe">
+        <value name="time">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category id="catdatalog" colour="#795548" name="DataLogging">
+      <block type="httplib_datalog_write_key"></block>
+      <block type="httplib_datalog_write">
+        <value name="logging_write">
+          <shadow type="text">
+            <field name="TEXT">Message</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category id="catifttt" colour="#455a64" name="IFTTT">
+      <block type="httplib_IFTTT_start"></block>
+      <block type="httplib_IFTTT_sent">
+        <value name="ifttt_value">
+          <shadow type="text">
+            <field name="TEXT">Message</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category id="catnetpie" colour="#7f8c8d" name="NETPIE">
+      <block type="httplib_netpie_start"></block>
+      <block type="httplib_Netpie_put">
+        <value name="data_put">
+          <shadow type="text">
+            <field name="TEXT">Message</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category id="catzigbee" colour="#7f8c8d" name="ZIGBEE">
+      <block type="ZigBee_read"></block>
+      <block type="ZigBee_output"></block>
+      
+    </category>
+  </xml>
+  <div class="row">
+    <div class="col-md-9">
+      <div id="blocklyDiv"></div>
+    </div>
+    <!-- <div class="col-md-1"></div> -->
+    <div class="col-md-3">
+      <!-- <div class="row">
+        <button class="btn btn-danger" (click)="clickedNew()">New</button>
+        <form (submit)="clickedSave()" #saveForm="ngForm">
+          <input type='text' [(ngModel)]="name" placeholder="untitled" ngControl="name" required/>
+          <button class="btn btn-success" type="submit" [disabled]="!saveForm.form.valid">Save</button>
+        </form>
+      </div> -->
+      <div class="row">
+        <div id="generated">
+          <pre class="full-size" [class.dirty]="dirty">{{generatedCode}}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

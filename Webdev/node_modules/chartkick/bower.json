@@ -1,0 +1,17 @@
+{
+  "name": "chartkick",
+  "version": "2.2.4",
+  "main": "chartkick.js",
+  "ignore": [
+    "**/.*"
+  ],
+  "homepage": "https://github.com/ankane/chartkick.js",
+  "authors": [
+    "Andrew Kane <andrew@chartkick.com>"
+  ],
+  "description": "Create beautiful charts with one line of JavaScript",
+  "keywords": [
+    "charts"
+  ],
+  "license": "MIT"
+}
