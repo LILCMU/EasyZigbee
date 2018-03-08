@@ -9,11 +9,11 @@ import { IconsComponent }   from './icons/icons.component';
 import { MapsComponent }   from './maps/maps.component';
 import { NotificationsComponent }   from './notifications/notifications.component';
 import { UpgradeComponent }   from './upgrade/upgrade.component';
-
+import { ZigbeeComponent }   from './zigbee/zigbee.component';
 export const AppRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'blockly',
+        redirectTo: 'zigbee',
         pathMatch: 'full',
     },
     {
@@ -51,5 +51,10 @@ export const AppRoutes: Routes = [
     {
         path: 'upgrade',
         component: UpgradeComponent
+    },
+    {
+        path: 'zigbee',
+        component: ZigbeeComponent
     }
+
 ]
