@@ -1,0 +1,926 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.contentSpatial * {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.spatialBlock * {
+	-webkit-user-select: auto;
+	-khtml-user-select: auto;
+	-moz-user-select: auto;
+	-ms-user-select: auto;
+	user-select: auto;
+}
+
+body {
+	background-color: white;
+	/*color: white;*/
+}
+
+a {
+	cursor: pointer;
+}
+
+animation-prototype {
+	-webkit-transition: all 0.3s ease-in-out;
+	   -moz-transition: all 0.3s ease-in-out;
+	     -o-transition: all 0.3s ease-in-out;
+	        transition: all 0.3s ease-in-out;
+}
+
+.snap .currentArea {
+	-webkit-transition: all 0.05s linear;
+	   -moz-transition: all 0.05s linear;
+	     -o-transition: all 0.05s linear;
+	        transition: all 0.05s linear;
+}
+
+.labFont {
+	font-family: "Courier New", Courier, mono;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+#spatialWrapper {
+	position: absolute;
+	background-color: white;
+	top: 150px;
+	left: 300px;
+	border: 1px solid #333;
+	border-radius: 4px;
+	width: 500px;
+	height: 500px;
+	box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.53);
+}
+
+#submitSpatial {
+	position: absolute;
+	bottom: 10px;
+	right: 20px;
+	border: 1px solid #333;
+	padding: 5px 15px;
+	border-radius: 4px;
+}
+
+.contentSpatial a:hover {
+	color: white;
+}
+
+.contentSpatial .mainArea {
+	position: absolute;
+	width: 480px;
+}
+
+.contentSpatial .mainArea p {
+	padding-left: 20px;
+	font-size: 1.25em;
+	margin-top: 6px;
+	margin-bottom: 10px;
+}
+
+.contentSpatial#conditionMainArea .mainArea p {
+	cursor: pointer;
+}
+#conditionMainArea .mainArea p:after {
+	content: '';
+	position: absolute;
+	background-color: blue;
+	margin-top: 6px;
+	margin-left: 6px;
+	width: 6px;
+	height: 6px;
+	border-radius: 3px;
+}
+#conditionMainArea .mainArea p:hover:after {
+	background-color: green;
+	width: 8px;
+	height: 8px;
+	margin-top: 5px;
+	margin-left: 5px;
+	border-radius: 4px;
+}
+#conditionMainArea .mainArea p:hover {
+	/*color: blue;*/
+}
+
+.contentSpatial .mainArea h3 {
+	padding-left: 20px;
+	font-size: 1.12em;
+	margin: 0;
+}
+
+.contentSpatial .wrapper {
+	position: relative;
+	width: 480px;
+	height: 460px;
+}
+
+.contentSpatial .control {
+	/*text-align: right;*/
+	padding-top: 30px;
+	padding-left: 205px;
+	margin-left: 300px;
+}
+.contentSpatial .control a {
+	margin: 20px 20px 0 0;
+	padding: 10px;
+	background-color: rgb(123, 170, 241);
+	box-shadow: 0 1px 2px black;
+	border-radius: 4px;
+}
+
+.contentSpatial .procedure {
+	position: relative;
+	left: 520px;
+	width: 610px;
+	min-height: 150px;
+	padding: 15px 0 1px 0;
+	/*border: 1px solid #333;*/
+}
+
+
+.conditionType {
+	position: absolute;
+	top: 2px;
+	left: 135px;
+	z-index: 500;
+}
+
+.conditionType div {
+	padding: 7px 20px;
+	margin: 5px;
+	background-color: rgb(222, 222, 222);
+	border: 1px solid rgb(45, 122, 240);
+	border-radius: 4px;
+}
+
+.conditionType div.selected {
+	background-color: rgb(123, 170, 241);
+}
+
+.hideLabel {
+	visibility: hidden;
+}
+
+#selectLeftSensor {
+	position: absolute;
+	left: 200px;
+	top: 430px;
+	font-family: "Courier New", Courier, mono;
+	cursor: pointer;
+}
+#selectLeftSensor:after {
+	content: '';
+	position: absolute;
+	background-color: blue;
+	margin-top: 6px;
+	margin-left: 6px;
+	width: 6px;
+	height: 6px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+#selectLeftSensor:hover:after {
+	background-color: green;
+	width: 8px;
+	height: 8px;
+	margin-top: 5px;
+	margin-left: 5px;
+	border-radius: 4px;
+}
+
+#selectRightSensor {
+	position: absolute;
+	left: 25px;
+	top: 270px;
+	font-family: "Courier New", Courier, mono;
+	-webkit-transform: rotate(270deg) translate3d(0px, 0px, 0px);
+	-webkit-transform-origin: 0px 0px;
+	cursor: pointer;
+}
+#selectRightSensor:after {
+	content: '';
+	position: absolute;
+	background-color: blue;
+	margin-top: 6px;
+	margin-left: 6px;
+	width: 6px;
+	height: 6px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+#selectRightSensor:hover:after {
+	background-color: green;
+	width: 8px;
+	height: 8px;
+	margin-top: 5px;
+	margin-left: 5px;
+	border-radius: 4px;
+}
+
+
+.switchLabel {
+	font-family: "Courier New", Courier, mono;
+	opacity: 0.8;
+	
+}
+
+.switchLabel div {
+	position: absolute;
+	display: none;
+}
+.switch .switchLabel div {
+	display: block;
+}
+
+.switchLabel .label1 {
+	top: 110px;
+	left: 95px;
+}
+
+.switchLabel .label2 {
+	top: 110px;
+	left: 300px;
+}
+
+.switchLabel .label3 {
+	top: 310px;
+	left: 90px;
+}
+
+.switchLabel .label4 {
+	top: 310px;
+	left: 300px;
+}
+
+.sensorX,.sensorY {
+	z-index: 10;
+	cursor: pointer;
+}
+
+#mappingExBlock, 
+.exBlock {
+	position: relative;
+	left: 520px;
+	width: 650px;
+	height: 400px;
+	/*border: 1px solid #333;*/
+	clear: both;
+	padding-top: 1px;
+}
+
+#spatialContentTemplate {
+	display: none;
+}
+
+.addBlock {
+	display: none;
+}
+
+.mappingBlock {
+	background-image: url(../media/mappingBlock.png);
+	background-image: url(../media/mbMiddle.png);
+	color: white;
+	/*display: inline-block;*/
+	/*width: 118px;*/
+	height: 51px;
+	font-size: 0.9em;
+	text-align: center;
+	line-height: 25px;
+	margin: 0px 35px 5px 0px;
+	float: left;
+	padding: 0 5px;
+	opacity: 0.7;
+	cursor: pointer;
+}
+.mappingBlock:hover {
+	opacity: 0.85;
+}
+.mappingBlock.selected {
+	opacity: 1;
+}
+.mappingBlock::before {
+	background-image: url(../media/mbLeft.png);
+	content: '';
+	position: absolute;
+	display: block;
+	width: 15px;
+	height: 51px;
+	left: -15px;
+	top: 0px;
+}
+.mappingBlock::after {
+	background-image: url(../media/mbRight.png);
+	content: '';
+	position: absolute;
+	display: block;
+	width: 12px;
+	height: 51px;
+	right: -12px;
+	top: 0px;
+}
+
+.mappingBlock div {
+	text-align: right;
+}
+
+.condBlock {
+	background-image: url(../media/gbMiddle.png);
+	color: white;
+	/*display: inline-block;*/
+	/*width: 127px;*/
+	height: 76px;
+	height: 28px;
+	font-size: 0.9em;
+	text-align: center;
+	line-height: 25px;
+	margin: 0px 110px 5px 0px;
+	float: left;
+	padding: 0 5px;
+	opacity: 0.7;
+	cursor: pointer;
+}
+.condBlock:hover {
+	opacity: 0.85;
+}
+.condBlock.selected {
+	opacity: 1;
+}
+.condBlock::before {
+	background-image: url(../media/gbLeft.png);
+	content: '';
+	position: absolute;
+	display: block;
+	width: 17px;
+	height: 76px;
+	height: 28px;
+	left: -17px;
+	top: 0px;
+}
+.condBlock::after {
+	background-image: url(../media/gbRight.png);
+	content: '';
+	position: absolute;
+	display: block;
+	width: 12px;
+	height: 76px;
+	height: 28px;
+	right: -12px;
+	top: 0px;
+}
+
+.condBlock div {
+	text-align: right;
+}
+
+.condBlock .var1::after, 
+.condBlock .var2::after {
+	position: absolute;
+	display: block;
+	width: 87px;
+	height: 26px;
+	right: -95px;
+	top: 0px;
+	background-image: url(../media/swBlock.png);
+	text-align: center;
+}
+
+.condBlock .var1.sw1::after, 
+.condBlock .var2.sw1::after{
+	content: 'switch 1';
+}
+.condBlock .var1.sw2::after, 
+.condBlock .var2.sw2::after{
+	content: 'switch 2';
+}
+.condBlock .var1.sw3::after, 
+.condBlock .var2.sw3::after{
+	content: 'switch 3';
+}
+.condBlock .var1.sw4::after, 
+.condBlock .var2.sw4::after{
+	content: 'switch 4';
+}
+.condBlock .var1.sw5::after, 
+.condBlock .var2.sw5::after{
+	content: 'switch 5';
+}
+.condBlock .var1.sw6::after, 
+.condBlock .var2.sw6::after{
+	content: 'switch 6';
+}
+.condBlock .var1.sw7::after, 
+.condBlock .var2.sw7::after{
+	content: 'switch 7';
+}
+.condBlock .var1.sw8::after, 
+.condBlock .var2.sw8::after{
+	content: 'switch 8';
+}
+
+.condBlock .var1.ss1::after, 
+.condBlock .var2.ss1::after{
+	content: 'sensor 1';
+}
+.condBlock .var1.ss2::after, 
+.condBlock .var2.ss2::after{
+	content: 'sensor 2';
+}
+.condBlock .var1.ss3::after, 
+.condBlock .var2.ss3::after{
+	content: 'sensor 3';
+}
+.condBlock .var1.ss4::after, 
+.condBlock .var2.ss4::after{
+	content: 'sensor 4';
+}
+.condBlock .var1.ss5::after, 
+.condBlock .var2.ss5::after{
+	content: 'sensor 5';
+}
+.condBlock .var1.ss6::after, 
+.condBlock .var2.ss6::after{
+	content: 'sensor 6';
+}
+.condBlock .var1.ss7::after, 
+.condBlock .var2.ss7::after{
+	content: 'sensor 7';
+}
+.condBlock .var1.ss8::after, 
+.condBlock .var2.ss8::after{
+	content: 'sensor 8';
+}
+
+
+#mainMenu {
+	position: absolute;
+	top: 10px;
+	left: 30px;
+	font-size: 16px;
+	color: rgb(102, 129, 167);
+}
+
+
+.spatialWrapper {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 800px;
+	height: 700px;
+}
+
+.canvasGraphic, .graphArea {
+	position: absolute;
+
+}
+
+.canvasGraphic {
+	z-index: 199;
+}
+
+#conditionMainArea .graphArea {
+	cursor: crosshair;
+}
+
+.controlArea {
+	width: 100%;
+	height: 100%;
+}
+
+.toggleGrid {
+	position: absolute;
+	background-color: rgb(102, 129, 167);
+	left: 40%;
+	top: 10px;
+	padding: 7px 10px;
+	font-size: 0.9em;
+	display: none;
+}
+
+#ssScale {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 200;
+}
+
+.ssScale {	
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(255, 0, 0, 0.71);
+}
+.ssScale.disabled {
+	display: none;
+}
+
+#ssScale-v {
+	height: 100%;
+	width: 1px;
+}
+
+#ssScale-h {
+	width: 100%;
+	height: 1px;
+}
+
+#sensor-1 {
+	position: absolute;
+	background-color: rgb(102, 129, 167);
+	top: 40%;
+	left: 10px;
+	padding: 7px 10px;
+	font-size: 0.9em;
+}
+
+#sensor-2 {
+	position: absolute;
+	background-color: rgb(102, 129, 167);
+	left: 40%;
+	bottom: 10px;
+	padding: 7px 10px;
+	font-size: 0.9em;
+}
+
+.sensorY {
+	position: absolute;
+	background-color: rgb(200, 200, 200);
+	/*padding: 7px 10px;*/
+	font-size: 0.9em;
+	text-align: center;
+	color: white;
+	line-height: 50px;
+}
+
+.sensorX {
+	position: absolute;
+	background-color: rgb(200, 200, 200);
+	/*padding: 7px 10px;*/
+	font-size: 0.9em;
+	text-align: center;
+	color: white;
+	line-height: 25px;
+}
+
+.sensorX.disabledd,
+.sensorY.disabledd {
+	background-color: rgb(157, 157, 157);
+}
+
+.toggleGrid.gridOn,
+#sensor-1.sensorOn,
+#sensor-2.sensorOn,
+.sensorX.sensorOn,
+.sensorY.sensorOn {
+	background-color: rgb(42, 128, 245);
+}
+
+.area {
+	position: absolute;
+	background-color: hsla(213, 91%, 56%, 0.3);
+	cursor: move;
+	padding: 6px;
+	margin-top: -6px;
+	margin-left: -6px;
+}
+
+.area.highlight {
+	background-color: rgba(100, 221, 120, 0.67) !important;
+}
+
+.currentArea {	
+	/*border: 1px solid #1c5eb5;*/
+	background-color: hsla(213, 91%, 56%, 0.78);
+}
+
+.areaName {
+	position: absolute;
+}
+
+.areaSide {
+	position: absolute;
+}
+.areaSide:hover {
+	/*background-color: #1c5eb5;*/
+}
+
+.areaSide.TT,
+.areaSide.BB {
+	height: 8px;
+	width: 100%;
+}
+.areaSide.TT {
+	top: 0;
+	left: 0;
+	border-top: 1px solid #1c5eb5;
+	cursor: n-resize;
+}
+.areaSide.TT:hover {
+	border-top: 4px solid #1c5eb5;
+}
+.areaSide.BB {
+	bottom: 0;
+	left: 0;
+	border-bottom: 1px solid #1c5eb5;
+	cursor: s-resize;
+}
+.areaSide.BB:hover {
+	border-bottom: 4px solid #1c5eb5;
+}
+
+.areaSide.LL,
+.areaSide.RR {
+	width: 8px;
+	height: 100%;
+}
+.areaSide.LL {
+	left: 0;
+	top: 0;
+	border-left: 1px solid #1c5eb5;
+	cursor: w-resize;
+}
+.areaSide.LL:hover {
+	border-left: 4px solid #1c5eb5;
+}
+.areaSide.RR {
+	right: 0;
+	top: 0;
+	border-right: 1px solid #1c5eb5;
+	cursor: e-resize;
+}
+.areaSide.RR:hover {
+	border-right: 4px solid #1c5eb5;
+}
+
+.areaCorner {
+	position: absolute;
+	/*background-color: white;*/
+	width: 8px;
+	height: 8px;	
+}
+.areaCorner:hover {
+	width: 14px;
+	height: 14px;
+}
+
+.areaCorner.TL {
+	top: 0;
+	left: 0;
+	border-top: 1px solid #1c5eb5;
+	border-left: 1px solid #1c5eb5;
+	cursor: nw-resize;
+}
+.areaCorner.TL:hover {
+	top: -2px;
+	left: -2px;
+	border-top: 4px solid #1c5eb5;
+	border-left: 4px solid #1c5eb5;
+}
+
+.areaCorner.TR {
+	top: 0;
+	right: 0;
+	border-top: 1px solid #1c5eb5;
+	border-right: 1px solid #1c5eb5;
+	cursor: ne-resize;
+}
+.areaCorner.TR:hover {
+	top: -2px;
+	right: -2px;
+	border-top: 4px solid #1c5eb5;
+	border-right: 4px solid #1c5eb5;
+}
+
+.areaCorner.BL {
+	bottom: 0;
+	left: 0;
+	border-bottom: 1px solid #1c5eb5;
+	border-left: 1px solid #1c5eb5;
+	cursor: sw-resize;
+}
+.areaCorner.BL:hover {
+	bottom: -2px;
+	left: -2px;
+	border-bottom: 4px solid #1c5eb5;
+	border-left: 4px solid #1c5eb5;
+}
+
+.areaCorner.BR {
+	bottom: 0;
+	right: 0;
+	border-bottom: 1px solid #1c5eb5;
+	border-right: 1px solid #1c5eb5;
+	cursor: se-resize;
+}
+.areaCorner.BR:hover {
+	bottom: -2px;
+	right: -2px;
+	border-bottom: 4px solid #1c5eb5;
+	border-right: 4px solid #1c5eb5;
+}
+
+.boundNumber {
+	pointer-events: none;
+	display: none;
+	position: absolute;
+	font-size: 11px;
+	color: #1fc609;
+}
+.currentArea .boundNumber {
+	display: block;
+}
+
+.boundNumber.top {
+	top: -11px;
+	width: 100%;
+	left: 0;
+	text-align: center;
+}
+.boundNumber.bottom {
+	bottom: -14px;
+	width: 100%;
+	left: 0;
+	text-align: center;
+}
+.boundNumber.left {
+	top: 50%;
+	right: 100%;
+	margin: -6px 3px;
+	text-align: right;
+}
+.boundNumber.right {
+	top: 50%;
+	left: 100%;
+	margin: -6px 3px;
+	text-align: left;
+}
+
+.oneInput .boundNumber.top,
+.oneInput .boundNumber.bottom {
+	display: none;
+}
+
+.changeNameBTN, 
+.changeColorBTN {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	right: -14px;
+	cursor: pointer;
+	display: none;
+}
+
+.currentArea .changeNameBTN, 
+.currentArea .changeColorBTN {
+	display: block;
+}
+
+.changeNameBTN {
+	top: 0;
+	background-color: gray;
+}
+
+.changeColorBTN {
+	top: 18px;
+	background-color: #689be4;
+}
+
+
+/****  Converter  ****/
+
+.converter {
+	position: absolute;
+	/*top: 20px;*/
+	/*left: 50px;*/
+	width: 480px;
+	height: 460px;
+}
+
+.converter .controlArea {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.converter .result {
+	position: absolute;
+	top: 460px;
+	height: 24px;
+	color: black;
+}
+
+.converter .canvasGraphic, 
+.converter .graphArea {
+	position: absolute;
+}
+
+.converter .hDash, 
+.converter .vDash {
+	position: absolute;
+	width: 0;
+	height: 0;
+	top: 0;
+	left: 0;
+}
+.converter .hDash {
+	border-top: 1px dashed #ee4433;
+}
+.converter .vDash {
+	border-left: 1px dashed #ee4433;
+}
+
+.converter .popupPoint {
+	padding: 0px 8px;
+	/*margin-bottom: 10px;*/
+	/*border: 1px solid #333;*/
+	background-color: #ccdddd;
+	box-shadow: 2px -2px 2px rgba(0, 0, 0, 0.5);
+	border-radius: 6px;
+	position: absolute;
+	color: #006666;
+	width: 86px;
+	text-align: center;
+	pointer-events: none;
+	z-index: 225;
+	font-size: 12px;
+}
+.converter .popupPoint::after {
+	content: "";
+	position: absolute;
+	border-top: 16px solid #ccdddd;
+	border-left: 8px solid rgba(255, 0, 255, 0);
+	border-right: 8px solid rgba(0, 255, 255, 0);
+	/*background-color: #eee;*/
+	width: 0px;
+	height: 0px;
+	top: 16px;
+	left: 46px;
+	pointer-events: none;
+	/*box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);*/
+}
+
+.converter .point {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	border: 5px solid #3399ee;
+	margin: -5px;
+	border-radius: 5px;
+	z-index: 220;
+}
+.converter .point:hover,
+.converter .point.selected{
+	border-color:#ee4433;
+}
+
+.converter .line {
+	position: absolute;
+	height: 4px;
+	background-color: #3399ee;
+	-webkit-transform-origin: 0px 0px;
+	-webkit-transition: opacity 0.5s linear;
+	opacity: 1;
+	z-index: 215;
+	margin: -1px;
+}
+.converter .line:hover {
+	background-color: #ee4433;
+}
+
+.converter .controllInput {
+	position: absolute;
+	width: 40px;
+	height: 20px;
+	border: 1px solid #dff;
+	text-align: right;
+}
+.converter .controllInput1:focus {
+	text-align: left;
+}
+
+.converter .controllInput.maxY {
+	
+}
+
+.converter .controllInput.minX {
+	text-align: left;
+}
+
+
+
+
+
+
+
+
+

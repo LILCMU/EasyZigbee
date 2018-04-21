@@ -1,0 +1,241 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title" style="padding: 5px 5px 15px 5px ; ">{{boardstatus}}</h4>
+
+
+                        <button  class="btn" (click)="clickjoin()">join</button>
+                        <button class="btn" style="width:200px; margin:0px 0px 10px 10px;" (click)="clickConnected();">Connected</button>
+
+                        <button class="btn" style="width:200px; margin:0px 0px 10px 10px;" (click)="clickDisconnect();">Disconnect</button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title" style="padding: 5px 5px 15px 5px ; ">Create ZigBee Network</h4>
+                        <table style="width:100% ; ">
+                                <form  action="javascript:void(0);" (submit)="CreateNetwork(CoordinaterName.value);openModal5(template5);">
+                                <tr>
+                                    
+
+                                    <th>
+                                        <input class="inputlogin" placeholder="Enter Name " pattern="[A-Za-z0-9]{1,15}" required>
+                                    </th>
+                                    <th>
+                                        <button class="btn" style="width:200px; margin:0px 10px;" type="submit">Create</button>
+                                    </th>
+                                </tr>
+                            </form>
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title" style="padding: 5px 5px 15px 5px ; ">My ZigBee Network&nbsp; 
+                                <select style="border-radius:7px; padding: 5px 5px 5px 5px;" (change)="refresh(selectcoid.value) ;onConnected();" #selectcoid>
+                                    <option [hidden]="true">Select Coordinater</option>
+                                    <option *ngFor="let a of allcoid">{{a.network_name}} ( {{a.coid}} )</option>
+                                </select>
+                                <button class="btn" style="width:180px; margin: 12px 2px 20px 20px;" (click)="openModal(template)">
+                                    <i class="ti-rss-alt" style="padding:5px;"></i>&nbsp;Add device</button>
+                                    <button class="btn" style="width:180px; margin: 12px 2px 20px 20px;" (click)="openModal4(template4)">Delete Network </button>
+                                <a>
+                                   
+                                        <ng-template #template4>
+                                                <div class="modal-header" style="margin:10px;">
+                                                    <h4 class="modal-title pull-left" style="margin:-18px 2px;">Delete Network</h4>
+                                                    <button style="margin:-18px -1px;" type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="col-lg-3"></div>
+                                                            <div class="col-lg-6" style="text-align:center;">
+            
+                                                                <div>
+                                                                    <form  action="javascript:void(0);" >
+                                                                        <a>Are you sure to remove this Network ?</a>
+            
+                                                                        <div class="col-lg-12" style="text-align:center;">
+                                                                            <button class="btn" (click)="DeleteNetwork();" style="width: 225px ;margin: 5px;" type="submit">OK</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template #template5>
+                                                    <div class="modal-header" style="margin:10px;">
+                                                        <h4 class="modal-title pull-left" style="margin:-18px 2px;">ZigBee Setup</h4>
+                                                        <button style="margin:-18px -1px;" type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="col-lg-3"></div>
+                                                                <div class="col-lg-6" style="text-align:center;">
+                
+                                                                    <div>
+                                                                            <h4>{{CreateStatus}}</h4>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </ng-template>
+                                               
+                                    <ng-template #template>
+                                        <div class="modal-header" style="margin:10px;">
+                                            <h4 class="modal-title pull-left" style="margin:-18px 2px;">Add device to ZigBee Network</h4>
+                                            <button style="margin:-18px -1px;" type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="col-lg-2"></div>
+                                                    <div class="col-lg-8" style="text-align:center;">
+                                                        <div [hidden]="b">
+                                                            <a> Push button on device to join network</a>
+                                                            <br>
+        
+                                                            <div class="loader" style="padding: 5px 5px 5px 5px;"></div>
+                                                            <br>
+                                                            <br>
+                                                        </div>
+                                                        <div *ngIf="status">
+        
+                                                            <form >
+                                                                <a> Found device. please set name.</a>
+                                                                <div class="col-lg-12" style="margin:20px;">
+                                                                    <div class="col-lg-4">
+                                                                        <button class="btn" style="margin:2px;" (click)="identify();" type="submit">IDENTIFY</button>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                        <input class="inputlogin" placeholder="Device Name" pattern="[A-Za-z0-9]{1,15}" required #devicename>
+        
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-12" style="text-align:center;">
+                                                                    <button class="btn" (click)="sendname(devicename.value);" style="width: 225px ;margin: 5px;" type="submit">Accept</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </a>
+                            </h4>
+        
+                            <table style="width:100% ; ">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>IEEE</th>
+                                    <th>Command</th>
+                                </tr>
+                                <tr *ngFor="let a of table">
+                                    <th>{{a.NAME}}</th>
+                                    <th>{{a.SHORT_ADDR}}</th>
+                                    <input #addr [hidden]="true" type="text" value="{{a.SHORT_ADDR}}">
+                                    <th>{{a.IEEE_ADDR}}</th>
+                                    <input #ieee [hidden]="true" type="text" value="{{a.IEEE_ADDR}}">
+        
+                                    <th>
+                                        <button class="btn" (click)="identifyd(addr.value);" type="submit">IDENTIFY</button>
+                                        <button class="btn" (click)="openModal3(template3);" type="submit">REMOVE</button>
+                                        <button class="btn" (click)="openModal2(template2)" type="submit">
+                                            <i class="ti-pencil"></i>&nbsp;Edit</button>
+                                        <ng-template #template2>
+                                            <div class="modal-header" style="margin:10px;">
+                                                <h4 class="modal-title pull-left" style="margin:-18px 2px;">Add device to ZigBee Network</h4>
+                                                <button style="margin:-18px -1px;" type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-3"></div>
+                                                        <div class="col-lg-6" style="text-align:center;">
+        
+                                                            <div>
+                                                                <form (submit)="editname(devicename.value,ieee.value,addr.value);"action="javascript:void(0);" >
+                                                                    <a> Edit device in network</a>
+                                                                    <input class="inputlogin" placeholder="Device Name" pattern="[A-Za-z0-9]{1,15}" required value="{{a.NAME}}" #devicename>
+                                                                    <div class="col-lg-12" style="text-align:center;">
+                                                                        <button class="btn"  style="width: 225px ;margin: 5px;" type="submit">Accept</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template #template3>
+                                            <div class="modal-header" style="margin:10px;">
+                                                <h4 class="modal-title pull-left" style="margin:-18px 2px;">Delete device in ZigBee Network</h4>
+                                                <button style="margin:-18px -1px;" type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="col-lg-3"></div>
+                                                        <div class="col-lg-6" style="text-align:center;">
+        
+                                                            <div>
+                                                                <form action="javascript:void(0);" >
+                                                                    <a>Are you sure to remove this device ?</a>
+        
+                                                                    <div class="col-lg-12" style="text-align:center;">
+                                                                        <button class="btn" (click)="delete(ieee.value);" style="width: 225px ;margin: 5px;" type="submit">OK</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+
+
+
+    </div>
+    <!-- <iframe  src="/assets/tinker/index.html" width="100%" height="600" frameBorder="0" border="0"></iframe> -->

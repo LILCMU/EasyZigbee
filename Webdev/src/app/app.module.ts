@@ -21,7 +21,9 @@ import { MapsComponent }   from './maps/maps.component';
 import { NotificationsComponent }   from './notifications/notifications.component';
 import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { ZigbeeComponent }   from './zigbee/zigbee.component';
+import { GogoComponent }   from './gogo/gogo.component';
 import { ChartsModule } from 'ng2-charts';
+import { AuthService, AppGlobals } from 'angular2-google-login';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,8 @@ import { ChartsModule } from 'ng2-charts';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    ZigbeeComponent
+    ZigbeeComponent,
+    GogoComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,7 @@ import { ChartsModule } from 'ng2-charts';
   schemas: [
     NO_ERRORS_SCHEMA
 ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

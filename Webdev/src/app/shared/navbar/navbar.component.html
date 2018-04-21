@@ -9,8 +9,25 @@
             </button>
             <a class="navbar-brand" href="#">{{getTitle()}}</a>
         </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
+        <div class="collapse navbar-collapse" style="text-align: right;">
+            
+                <section class="google-login-page">
+                        <button *ngIf="!token" id="google-login-button" class="btn btn-primary" (click)="googleAuthenticate()">Google Sign-In</button>
+                      
+                        <div *ngIf="token">
+                         
+                          <!-- <br>
+                          <b>TOKEN: </b>
+                          <p>{{token}}</p>
+                          <b>NAME: </b> -->
+                          <p> <img  style="border-radius: 50%;" width="35px;"src="{{imageURL}}"> &nbsp;{{name}}&nbsp;&nbsp;<button class="btn btn-danger" (click)="logout()">Logout</button></p>
+                          <!-- <b>EMAIL: </b>
+                          <p>{{email}}</p> -->
+                      
+                          
+                        </div>
+                      </section>
+            <!-- <ul class="nav navbar-nav navbar-right">
                     <li><a><p>{{username}}</p></a></li>
                 <li>
                     <a (click)="openModal(template,log.value)">
@@ -52,7 +69,7 @@
                             </ng-template>
                     </a>
                 </li>
-            </ul>
+            </ul> -->
 
         </div>
     </div>

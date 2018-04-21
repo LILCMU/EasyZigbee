@@ -23,12 +23,14 @@
     "@angular/router": "^4.0.0",
     "@ngui/map": "^0.18.3",
     "@types/googlemaps": "^3.26.14",
+    "angular2-google-login": "^1.0.9",
     "angular2-mqtt": "^1.7.1",
     "arrive": "^2.3.1",
     "bootstrap": "^3.3.5",
     "bootstrap-notify": "^3.1.3",
     "chart.js": "^2.7.1",
     "chartist": "^0.9.4",
+    "ng2-mqtt": "^0.1.2",
     "core-js": "^2.4.1",
     "http-headers": "^3.0.2",
     "jquery": "^1.12.4",
@@ -38,7 +40,7 @@
     "ngx-bootstrap": "^2.0.0-beta.9",
     "ngx-tabs": "0.0.13",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.7.4"
   },
   "devDependencies": {
     "@angular/cli": "1.1.1",

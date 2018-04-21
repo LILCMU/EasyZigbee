@@ -10,6 +10,7 @@ import { MapsComponent }   from './maps/maps.component';
 import { NotificationsComponent }   from './notifications/notifications.component';
 import { UpgradeComponent }   from './upgrade/upgrade.component';
 import { ZigbeeComponent }   from './zigbee/zigbee.component';
+import { GogoComponent }   from './gogo/gogo.component';
 export const AppRoutes: Routes = [
     {
         path: '',
@@ -55,6 +56,11 @@ export const AppRoutes: Routes = [
     {
         path: 'zigbee',
         component: ZigbeeComponent
+    }
+    ,
+    {
+        path: 'gogo',
+        component: GogoComponent
     }
 
 ]
